@@ -3,9 +3,7 @@ pipeline{
     stages {
         stage('Docker Build'){
             steps{
-                sh 'pwd'
-                sh 'cd /assignment2'
-                sh 'docker build -t rahman3593/infracubator:assignment2-version$""BUILD_ID""'
+                sh 'docker build . -t rahman3593/infracubator:assignment2-version$BUILD_NUMBER -f ./docker_assignment/assignment2/Dockerfile'
             }
         }
     stage('Docker Push') {
