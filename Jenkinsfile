@@ -3,7 +3,9 @@ pipeline{
     stages {
         stage('Docker Build'){
             steps{
-                sh 'docker build . -t rahman3593/infracubator:assignment2-version$BUILD_NUMBER -f ./docker_assignment/assignment2/Dockerfile'
+                dir("${env.WORKSPACE}/docker_assignment/assignment2") {
+                    sh 'docker build . -t rahman3593/infracubator:assignment2-version$BUILD_NUMBER'
+                }
             }
         }
     stage('Docker Push') {
